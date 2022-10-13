@@ -1,8 +1,7 @@
 import * as React from "react"
-import { Settings } from "react-native"
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
 
-const Settings = (props) => (
+const Setsing = (props) => (
   <Svg
     width={30}
     height={30}
@@ -24,4 +23,4 @@ const Settings = (props) => (
   </Svg>
 )
 
-export default Settings
+export default Setsing

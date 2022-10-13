@@ -1,11 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Home from './Home'
-
+import Home from './Home';
+import Navbar from './Navbar';
+import VistaAlbum from './VistaAlbum';
+import Foto from './Foto';
+import Listado from './ListadoAlbumes'
 export default function App() {
   return (
     <View style={styles.container}>
-      <Home/>
+      <Listado/>
       <StatusBar style="auto" />
     </View>
   );

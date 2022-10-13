@@ -12,110 +12,113 @@ import Lugar1 from './assets/inicio/LaRomana';
 import Lugar2 from './assets/inicio/HatoMayor';
 import Lugar3 from './assets/inicio/LaAltagracia';
 import Welcome from './assets/inicio/Welcome';
+import { useFonts } from 'expo-font';
 
 export default function Home() {
-
-    return (
-        <View style={styles.container}>
-            <View style={styles.flexcontainer}>
-                <View style={styles.logo}>
-                    <Logo style={styles.logo} />
-                </View>
-                <View style={styles.flexcontainer.item}>
-                    <Text>Albumes recientes</Text>
-                    <View style={styles.albumes}>
-                        <View style={styles.albumes.item}>
-                            <Recent1 >
-                            </Recent1>
-                            <Text style={styles.textView}>Almbun nombre</Text>
-                        </View>
-                        <View style={styles.albumes.item}>
-                            <Recent2 />
-                            <Text style={styles.textView}>Almbun nombre</Text>
-                        </View>
-                        <View style={styles.albumes.item}>
-                            <Recent3 />
-                            <Text style={styles.textView}>Almbun nombre</Text>
-                        </View>
-                        <View style={styles.albumes.item}>
-                            <Recent4 />
-                            <Text style={styles.textView}>Almbun nombre</Text>
+    const [fontsLoaded] = useFonts({
+        'LexendGiga-Black': require('./assets/fonts/LexendGiga-Black.ttf'),
+        'LexendGiga-SemiBold': require('./assets/fonts/LexendGiga-SemiBold.ttf'),
+      });
+      if(fontsLoaded){
+        return (
+            <View style={styles.container}>
+                <View style={styles.flexcontainer}>
+                    <View style={styles.logo}>
+                        <Logo />
+                    </View>
+                    <View style={{paddingTop: 34}}>
+                        <Text style={styles.Title}>Albumes recientes</Text>
+                        <View style={styles.albumes}>
+                            <View style={styles.albumes.item}>
+                                <Recent1 >
+                                </Recent1>
+                                <Text style={styles.textView}>Almbun nombre</Text>
+                            </View>
+                            <View style={styles.albumes.item}>
+                                <Recent2 />
+                                <Text style={styles.textView}>Almbun nombre</Text>
+                            </View>
+                            <View style={styles.albumes.item}>
+                                <Recent3 />
+                                <Text style={styles.textView}>Almbun nombre</Text>
+                            </View>
+                            <View style={styles.albumes.item}>
+                                <Recent4 />
+                                <Text style={styles.textView}>Almbun nombre</Text>
+                            </View>
                         </View>
                     </View>
-                </View>
-                <View style={styles.flexcontainer.item}>
-                    <Text>Etiquetas</Text>
-                    <View style={styles.tags}>
-                        <Tag1 style={styles.tags.item} />
-                        <Tag2 style={styles.tags.item} />
-                        <Tag3 style={styles.tags.item} />
-                        <Tag4 style={styles.tags.item} />
-                    </View>
-                </View>
-                <View style={styles.flexcontainer.item}>
-                    <Text>Lugares visitados</Text>
-                    <View style={styles.lugaresVisitados}>
-                        <View style={styles.lugaresVisitados.item}>
-                            <Lugar1 />
-                            <Text>La Romana</Text>
-                        </View>
-                        <View style={styles.lugaresVisitados.item}>
-                            <Lugar2 />
-                            <Text>Hato Mayor</Text>
-                        </View>
-                        <View style={styles.lugaresVisitados.item}>
-                            <Lugar3 />
-                            <Text>La Altagracia</Text>
+                    <View style={{paddingTop: 41}}>
+                        <Text style={styles.Title}>Etiquetas</Text>
+                        <View style={styles.tags}>
+                            <Tag1 style={styles.tags.item} />
+                            <Tag2 style={styles.tags.item} />
+                            <Tag3 style={styles.tags.item} />
+                            <Tag4 style={styles.tags.item} />
                         </View>
                     </View>
-                </View>
-                <View style={{...styles.flexcontainer.item, ...styles.welcome}}>
-                    <Welcome />
-                    <Text style={{maxWidth: 170}}>¡Organiza y filtra tus colecciones  al instante!</Text>
+                    <View style={styles.viewSpace}>
+                        <Text style={styles.Title}>Lugares visitados</Text>
+                        <View style={styles.lugaresVisitados}>
+                            <View style={styles.lugaresVisitados.item}>
+                                <Lugar1 />
+                                <Text style={styles.NormalText}>La Romana</Text>
+                            </View>
+                            <View style={styles.lugaresVisitados.item}>
+                                <Lugar2 />
+                                <Text style={styles.NormalText}>Hato Mayor</Text>
+                            </View>
+                            <View style={styles.lugaresVisitados.item}>
+                                <Lugar3 />
+                                <Text numberOfLines={1} style={styles.NormalText}>Higuey</Text>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={styles.welcome}>
+                        <Welcome />
+                        <Text style={{...styles.NormalText, maxWidth: 170}}>¡Organiza y filtra tus colecciones  al instante!</Text>
+                        <View>
+                        </View>
+                    </View>
                 </View>
             </View>
-
-        </View>
-    );
+        );
+      }       
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ffffff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        maxWidth: '100%'
+        maxWidth: '90%',
+        paddingTop: 40,
+        borderWidth: 1
     },
-    flexcontainer: {
-        flex: 1,
-        flexDirection: "column",
-        //alignContent: 'flex-end',
-        width: '100%',
-        flexWrap: "wrap",
-        item: {
-            height: 150,
-            width: '100%',
-            borderWidth: 1
-        },
+    Title:{
+        fontFamily: 'LexendGiga-Black'
+    },
+    NormalText:{
+        fontFamily: 'LexendGiga-SemiBold', 
+        fontSize: 11
     },
     logo: {
-        paddingVertical: 10,
+        paddingTop: 35,
         alignItems: 'flex-end'
         //alignSelf: 'flex-end'
     },
     albumes: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        backgroundColor: 'red',
         item: {
-            paddingTop: 5,
-            flexDirection: 'column',
+            paddingTop: 10,
+            flexDirection: 'row',
             alignItems: 'center',
-            flexWrap: 'wrap',
             borderWidth: 1
         }
     },
     textView: {
+        fontFamily: 'LexendGiga-SemiBold',
         position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
@@ -128,28 +131,36 @@ const styles = StyleSheet.create({
       },
     tags: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
+        paddingTop: 10,
         item: {
-            borderWidth: 1,
+            //borderWidth: 1,
             backgroundColor: '#F4F4F4',
-            padding: 10
+            borderRadius: 15,
+            width: 65,
+            height: 65,
+            padding: 15
         }
-
+    },
+    viewSpace:{
+        paddingTop: 41
     },
     lugaresVisitados: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingTop: 5,
+        paddingTop: 10,
         item:{
             borderWidth: 1,
             flexDirection: 'column',
             alignItems: 'center',
-            padding: 3
+            borderRadius: 15,    
+            maxWidth: 114         
         }
     },
     welcome: {
         flexDirection: 'row',
         alignItems: 'center',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        paddingTop: 14,
     }
 });
